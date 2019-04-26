@@ -13,7 +13,7 @@ class ListItem extends Component {
 
         return (
             <div className="text-center" 
-            style={this.props.style}
+            style={this.props.style} onClick={this.props.handleClick} id={this.props.text}
             >
                 <div>
                     {this.props.text}
