@@ -6,7 +6,9 @@ function Checkout(props){
             background:"#F26419",
             border:15,
             borderColor:'ffffff',
-            borderWidth:4
+            borderWidth:4,
+            color:"white",
+            fontWeight: 'bold',
         },
         checkoutHover:{
             background:"red"
@@ -14,7 +16,7 @@ function Checkout(props){
     }
     return(
 
-        <div className="btn btn-success btn-block" style={style.checkout}>
+        <div className="btn  btn-block" style={style.checkout}>
         CHECKOUT
         </div>
     );

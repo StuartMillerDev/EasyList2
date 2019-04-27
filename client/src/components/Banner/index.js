@@ -8,7 +8,8 @@ function Banner(props){
           borderRadius:10,
           borderWidth: 3,
           borderColor: '#fff',
-          color:"white"
+          color:"white",
+         
         },
         h1:{
             background:"#33CCFF"

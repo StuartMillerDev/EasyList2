@@ -7,6 +7,6 @@ const listSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const Book = mongoose.model("List", listSchema);
+const List = mongoose.model("List", listSchema);
 
 module.exports = List;
