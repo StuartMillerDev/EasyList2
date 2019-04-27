@@ -12,12 +12,12 @@ class ListItem extends Component {
     render() {
 
         return (
-            <div className="text-center" 
+            <div
             style={this.props.style} onClick={this.props.handleClick} id={this.props.text}
             >
-                <div>
+                
                     {this.props.text}
-                </div>
+                
             </div>
         )
     }

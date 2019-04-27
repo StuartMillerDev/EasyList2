@@ -22,8 +22,8 @@ const style={
   listItemAfter: {
     margin:15,
     padding: 2,
-    background:"#33CCFF",
-    color:'white',
+    background:"#F6AE2D",
+    color:'Black',
     fontWeight: 'bold',
     borderRadius:5,
     textDecorationLine: 'line-through'
@@ -36,21 +36,41 @@ state={
   items
 }
 
+  componentDidMount(items){
+    console.log(this.state.items);
+  }
+  
 
-  handleItemCheck = item =>{
-    let itemStatus=this.state.item.checked;
-    console.log(item);
-    this.setState({item:!item.checked});
+// A function to invert the isChecked Property on each listItem
+  handleItemCheck = event =>{
+    event.preventDefault();
+    let targetItem=event.target.id;
+    let self=this;
+    this.state.items.forEach(function(item){
+      let newItems = items;
+      if(item.name===targetItem){
+        item.isChecked=!item.isChecked;
+        let index=newItems.indexOf(item);
+        newItems[index]=item;
+        console.log(self);
+       self.setState({items:newItems}, function(){
+        //  call back function to log the state after inverting the isChecked property
+         console.log(self.state.items);
+       });
+
+      }
+    });
   }
 
-
+// Render method
   render(){
-
+    
     return (
-      <div style={style.list} className="container text-center">
+      <div style={style.list} className=" text-center">
+      {/* for each item in the items array map each one and pass in props */}
         {this.state.items.map(item =>(
-          <ListItem key={item.id} text={item.name} handleClick = {this.handleItemCheck}/>
-          // style={this.state.item.checked ? style.listItem : style.listItemAfter}/>
+          <ListItem key={item.id} text={item.name} handleClick = {this.handleItemCheck} style={item.isChecked ? style.listItemAfter :style.listItem }/>
+          
         ))}
       </div>
     );
