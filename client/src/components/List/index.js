@@ -62,7 +62,9 @@ class List extends Component {
     const updatedItems = [...this.state.items];
     const targetIdx = updatedItems.findIndex(item => item.name === targetItem);
     updatedItems[targetIdx].isChecked = !updatedItems[targetIdx].isChecked;
+    // Optimistic rerender below
     this.setState({ items: updatedItems });
+    // update the list in the database
     this.updateList(updatedItems)
       .then(this.getListItems);
   };
