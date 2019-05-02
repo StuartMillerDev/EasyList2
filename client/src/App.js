@@ -11,6 +11,7 @@ function App() {
 
     <Router>
     <div className="App">
+    
       <Switch>
         <Route exact path="/" component={Loading} />
         <Route exact path="/Control" component={ViewControl} />

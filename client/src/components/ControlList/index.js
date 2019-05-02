@@ -9,6 +9,7 @@ function ControlList(props){
         }
     }
 
+
   
 
     return(
@@ -23,13 +24,20 @@ function ControlList(props){
                         <li class="list-group-item">Vestibulum at eros</li>
                     </ul>
                 </div>
-                <div id="">
-                    LIST CONTROL BUTTONS HERE
+                <div id="controlButtons">
+                    <RoundButton className="btn btn-primary rounded-circle"  text="OPEN" />
+                    <RoundButton className="btn btn-primary rounded-circle"  text="EDIT" />
+                    <RoundButton className="btn btn-primary rounded-circle"  text="ADD PEOPLE" />
+                    <RoundButton className="btn btn-danger rounded-circle"  text="DELETE" />
                 </div>
             </div>    
             <div className="row">
-                USER CONTROLS HERE
-                <RoundButton text={""} style={style.button} />
+                <div className="col-med-12">
+                <RoundButton className="btn btn-primary rounded-circle"  text="DELETE" />
+                <RoundButton className="btn btn-primary rounded-circle"  text="DELETE" />
+                <RoundButton className="btn btn-secondary rounded-circle"  text="LOGOUT" />
+                <RoundButton className="btn btn-warning rounded-circle"  text="ACCOUNT" />
+                </div>
             </div>
         </div>
     );

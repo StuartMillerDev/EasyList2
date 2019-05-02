@@ -13,14 +13,10 @@ class ViewControl extends Component{
         
       }
 
-      handleClick = event =>{
-        console.log("CLICKED!");
-    }
-
       render(){
           return(
-             <div className="">
-                 <RoundButton  text={"Template"} />
+             <div>
+                
                  <ControlList />
               </div>
           );
