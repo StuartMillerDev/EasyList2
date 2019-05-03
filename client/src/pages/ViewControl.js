@@ -12,6 +12,7 @@ class ViewControl extends Component{
       }
 
       render(){
+        //   Grabbing all the lists from the database and passing them down to the child components
           return(
              <div>
                 {

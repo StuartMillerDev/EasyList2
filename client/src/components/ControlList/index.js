@@ -1,12 +1,12 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import axios from "axios";
 import RoundButton from "../RoundButton";
 
 class ControlList extends React.Component {
-    style={
-        button:{
-            
-        }
+   
+    state={
+       
     }
 
    
@@ -15,7 +15,21 @@ class ControlList extends React.Component {
       console.log("CLICKED BUTTON");
       
     }
+
+    handleListSelect=event=>{
+        console.log(this.state)
+        let listTarget=event.target.textContent;
+        this.setState({selectedList:listTarget}, ()=>{
+            document.querySelectorAll('.topBtns').forEach(btn => {
+                btn.classList.remove('disabled')
+            })
+        }
+    );
+        // console.log(listTarget.textContent);
+    }
     
+  
+
     componentDidMount() {
         this.props.searchAllListNames()
   }
@@ -34,16 +48,18 @@ class ControlList extends React.Component {
                         {
                             this.props.lists && 
                             this.props.lists.map(list=>{
-                            return <li key={list.listName} className="list-group-item">{list.listName}</li>
+                            return <li key={list.listName} className="list-group-item" onClick={this.handleListSelect}>{list.listName}</li>
                         })
                         }
                     </ul>
                 </div>
                 <div id="controlButtons">
-                    <RoundButton className="btn btn-primary rounded-circle"  text="OPEN" onClick={this.handleClick} />
-                    <RoundButton className="btn btn-primary rounded-circle"  text="EDIT" />
-                    <RoundButton className="btn btn-primary rounded-circle"  text="ADD PEOPLE" />
-                    <RoundButton className="btn btn-danger rounded-circle"  text="DELETE" />
+                    {/* <RoundButton className="btn btn-primary rounded-circle"  text="OPEN" >  */}
+                    <Link className="btn btn-primary rounded-circle topBtns disabled" to={`/lists/${this.state.selectedList}`}>open</Link>  
+                    {/* </RoundButton > */}
+                    <RoundButton className="btn btn-primary rounded-circle topBtns disabled" text="EDIT" />
+                    <RoundButton className="btn btn-primary rounded-circle topBtns disabled"  text="ADD PEOPLE" />
+                    <RoundButton className="btn btn-danger rounded-circle topBtns disabled"  text="DELETE" />
                 </div>
             </div>    
             <div className="row">

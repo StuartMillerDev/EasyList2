@@ -15,6 +15,10 @@ class ViewCheckout extends Component{
           return(
              <div className="text-center">
                  <Banner listName={"Checkout"}  text={"CHECKOUT"}/>
+
+                 YOU HAVE CHECKED OUT
+
+                 <div className="">RETURN TO CONTROL</div>
                  
               </div>
           );
