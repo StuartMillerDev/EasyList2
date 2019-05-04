@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class ViewCreateList extends Component{
 
     state={
-
+        listName:""
     }
 
     constructor(props) {
@@ -15,6 +15,17 @@ class ViewCreateList extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
+      style={
+        checkout:{
+            background:"#F26419",
+            border:15,
+            borderColor:'ffffff',
+            borderWidth:4,
+            color:"white",
+            fontWeight: 'bold',
+        }
+    }
+
     componentDidMount() {
         // Load items from items collection
         console.log(this.props)
@@ -22,7 +33,9 @@ class ViewCreateList extends Component{
       }
 
       handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({value: event.target.value,
+            listName: event.target.value});
+          
       }
 
       handleSubmit(event) {
@@ -60,7 +73,7 @@ class ViewCreateList extends Component{
                         <input className="form-control" type="submit" value="Submit" onClick={this.handleSubmit}/>
                     </form>
                     </div>
-                    <div ><Link className="btn btn-lg btn-primary btn-block" to="/control">RETURN TO CONTROL</Link></div>
+                    <div ><Link  style={this.style.checkout} to="/control">RETURN TO CONTROL</Link></div>
 
                 </div>
           );

@@ -3,12 +3,11 @@ const listController = require("../../controllers/listController");
 
 // Matches with "/api/items"
 router.route("/")
-.get(listController.ItemfindAll);
-
+.get(listController.ItemfindAll)
+.post(listController.ItemCreate);
   // Matched with "/api/items/:itemName"
 router.route("/:itemName")
 .get(listController.ItemfindAll)
-.post(listController.ItemCreate)
 .put(listController.ItemUpdate)
 .delete(listController.ItemRemove);
 
