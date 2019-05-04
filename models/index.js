@@ -1,5 +1,7 @@
 const List = require("./list");
+const Item = require("./items");
 
 module.exports = {
-  List: List
+  List: List,
+  Item: Item
 };

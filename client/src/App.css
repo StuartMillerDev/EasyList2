@@ -36,11 +36,20 @@
   }
 }
 
+.topBtns{
+  margin-top: 25%;
+  padding: 2%;
+  border: #000000;
+  border-width: 3px;
+
+}
+
 #controlButtons{
-  background-color: #86BBD8
+  background-color: #86BBD8;
+
 }
 #ListContainer{
-  min-height: calc(100vh - 38px);
+  min-height: calc(50vh);
 
 }
 
@@ -56,3 +65,9 @@
   
   
 }
+.accountButtons{
+  margin-top:10%;
+  padding: 5px;
+
+}
+
