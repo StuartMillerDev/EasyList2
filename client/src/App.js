@@ -16,11 +16,13 @@ class App extends React.Component {
 
   componentDidMount(){
     this.searchAllListNames();
+    this.searchAllitemNames();
   }
   // Finds all the available items and puts them in the state
   searchAllitemNames=event=>{
     axios.get("/api/items/").then( res=>{
-      this.setState({items : res.data}, ()=>{
+      // console.log(res.data[0].Availableitems)
+      this.setState({items : res.data[0].Availableitems}, ()=>{
         console.log(this.state);
       } )
     }

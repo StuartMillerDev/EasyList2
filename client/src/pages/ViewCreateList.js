@@ -17,6 +17,7 @@ class ViewCreateList extends Component{
 
     componentDidMount() {
         // Load items from items collection
+        console.log(this.props)
         
       }
 
@@ -52,7 +53,7 @@ class ViewCreateList extends Component{
                         {
                             this.props.items && 
                             this.props.items.map(item=>{
-                            return <li key={item.itemName} className="list-group-item btn-sm" onClick={this.handleAddItem}>{item.itemName}</li>
+                            return <li key={item.name} className="list-group-item btn-sm" onClick={this.handleAddItem}>{item.name}</li>
                         })
                         }
                         </ul>
