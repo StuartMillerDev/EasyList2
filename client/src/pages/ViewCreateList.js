@@ -27,22 +27,22 @@ class ViewCreateList extends Component{
     }
 
     componentDidMount() {
-        // Load items from items collection
+        
         console.log(this.props)
         
       }
-
+        // Captures the name the user types 
       handleChange(event) {
         this.setState({value: event.target.value,
             listName: event.target.value});
           
       }
-
+        //   Creates a new list
       handleSubmit(event) {
         event.preventDefault();
         this.props.createNewList();
       }
-
+        //   Function to add a new item to the new list
       handleAddItem(event){
         event.preventDefault();
       }

@@ -36,10 +36,11 @@ class List extends Component {
     listId: null
   };
 
+  // Collects all the items
   componentDidMount(items) {
     this.getListItems();
   }
-
+  // a default loading 
   getListItems = () => {
     axios.get("/api/lists/Default")
       .then(results => this.setState({
@@ -47,7 +48,7 @@ class List extends Component {
         listId: results.data._id
       }));
   }
-
+  // 
   updateList = (items) => {
     return axios.put("/api/lists/Default", {
       listId: this.state.listId,
