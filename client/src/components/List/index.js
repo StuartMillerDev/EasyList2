@@ -55,7 +55,7 @@ class List extends Component {
       }
     );
   }
-  // 
+  // updates the database with the current list items 
   updateList = (items) => {
     return axios.put(`/api/lists/Default`, {
       listId: this.state.listId,
