@@ -4,7 +4,7 @@ class ListItem extends Component {
     // function ListItem(props){
 
     componentDidMount() {
-        console.log(this.props.handleClick)
+        // console.log(this.props.handleClick)
     }
 
     //     

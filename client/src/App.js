@@ -21,9 +21,8 @@ class App extends React.Component {
   // Finds all the available items and puts them in the state
   searchAllitemNames=event=>{
     axios.get("/api/items/").then( res=>{
-      // console.log(res.data[0].Availableitems)
       this.setState({items : res.data[0].Availableitems}, ()=>{
-        console.log(this.state);
+        // console.log(this.state);
       } )
     }
       // Set state with results
@@ -34,21 +33,14 @@ class App extends React.Component {
    searchAllListNames=event=>{
     axios.get("/api/lists/").then( res=>{
       this.setState({lists : res.data}, ()=>{
-        console.log(this.state);
+        // console.log(this.state);
       } )
     }
       // Set state with results
     ).catch(err => console.error(err));
 }
 
-    // Generates a new list and sends to the database
-    createNewList=event=>{
-      axios.post("/api/lists", {list}).then(res =>{
-        this.setState({lists:res.data},()=>{
 
-        })
-      })
-    }
 
 
   render(){
@@ -61,7 +53,7 @@ class App extends React.Component {
           <Route exact path="/" component={Loading} />
           <Route exact path="/Control" render={props => <ViewControl  searchAllListNames={this.searchAllListNames} lists={this.state.lists}/>} />
           <Route exact path="/Checkout" component={ViewCheckout}/>
-          <Route exact path="/CreateList" render ={props=> <ViewCreateList searchAllitemNames={this.searchAllitemNames} createNewList={this.createNewList} items={this.state.items}/>}/>
+          <Route exact path="/CreateList" render ={props=> <ViewCreateList searchAllitemNames={this.searchAllitemNames}  items={this.state.items}/>}/>
           <Route exact path="/lists/:id" component={ViewList} />
         </Switch>
       </div>

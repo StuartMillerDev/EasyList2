@@ -8,7 +8,7 @@ import ControlList from "../components/ControlList";
 class ViewControl extends Component{
 
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
       }
 
       render(){

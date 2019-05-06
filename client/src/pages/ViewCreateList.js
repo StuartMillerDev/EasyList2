@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
-
+import axios from "axios";
 class ViewCreateList extends Component{
 
     state={
@@ -26,6 +26,15 @@ class ViewCreateList extends Component{
         }
     }
 
+    // Generates a new list and sends to the database
+    createNewList(event){
+        axios.post("/api/lists", {listName:this.state.listName}).then(res =>{
+          this.setState({lists:res.data},()=>{
+  
+          })
+        })
+      }
+
     componentDidMount() {
         
         console.log(this.props)
@@ -40,7 +49,7 @@ class ViewCreateList extends Component{
         //   Creates a new list
       handleSubmit(event) {
         event.preventDefault();
-        this.props.createNewList(this.state);
+        this.createNewList();
       }
         //   Function to add a new item to the new list
       handleAddItem(event){

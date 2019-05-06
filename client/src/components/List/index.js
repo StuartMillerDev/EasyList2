@@ -42,7 +42,7 @@ class List extends Component {
   }
   // a default loading 
   getListItems = () => {
-    axios.get("/api/lists/Default")
+    axios.get(`/api/lists/${this.props.listName}`)
       .then(results => this.setState({
         items: results.data.listItems,
         listId: results.data._id
@@ -50,7 +50,7 @@ class List extends Component {
   }
   // 
   updateList = (items) => {
-    return axios.put("/api/lists/Default", {
+    return axios.put(`/api/lists/${this.props.listName}`, {
       listId: this.state.listId,
       listItems: items
     });

@@ -12,7 +12,7 @@ class ControlList extends React.Component {
    
 
    handleClick= event=>{
-      console.log("CLICKED BUTTON");
+    //   console.log("CLICKED BUTTON");
       
     }
 
@@ -36,7 +36,7 @@ class ControlList extends React.Component {
   }
 
   componentDidUpdate() {
-      console.log(this.props)
+    //   console.log(this.props)
   }
 
 
