@@ -43,7 +43,7 @@ class App extends React.Component {
 
     // Generates a new list and sends to the database
     createNewList=event=>{
-      axios.post("/api/lists").then(res =>{
+      axios.post("/api/lists", {list}).then(res =>{
         this.setState({lists:res.data},()=>{
 
         })

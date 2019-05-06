@@ -40,7 +40,7 @@ class ViewCreateList extends Component{
 
       handleSubmit(event) {
         event.preventDefault();
-        this.props.createNewList();
+        this.props.createNewList(this.state);
       }
 
       handleAddItem(event){
