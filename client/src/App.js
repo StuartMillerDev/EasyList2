@@ -54,7 +54,7 @@ class App extends React.Component {
           <Route exact path="/Control" render={props => <ViewControl  searchAllListNames={this.searchAllListNames} lists={this.state.lists}/>} />
           <Route exact path="/Checkout" component={ViewCheckout}/>
           <Route exact path="/CreateList" render ={props=> <ViewCreateList searchAllitemNames={this.searchAllitemNames}  items={this.state.items}/>}/>
-          <Route exact path="/lists/:id" component={ViewList} />
+          <Route exact path="/lists/:id" render ={props => <ViewList listName={this.state.listName}/>}/>
         </Switch>
       </div>
     </Router>

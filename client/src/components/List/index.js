@@ -33,7 +33,8 @@ const style = {
 class List extends Component {
   state = {
     items: [],
-    listId: null
+    listId: null,
+    listName:""
   };
 
   // Collects all the items
@@ -42,15 +43,21 @@ class List extends Component {
   }
   // a default loading 
   getListItems = () => {
-    axios.get(`/api/lists/${this.props.listName}`)
-      .then(results => this.setState({
-        items: results.data.listItems,
-        listId: results.data._id
-      }));
+    console.log(this.props);
+    axios.get(`/api/lists/Default`)
+      .then(results => {
+        this.setState({
+          items: results.data.listItems,
+          listName:results.data.listName,
+          listId: results.data._id
+        });
+        console.log(this.state);
+      }
+    );
   }
   // 
   updateList = (items) => {
-    return axios.put(`/api/lists/${this.props.listName}`, {
+    return axios.put(`/api/lists/Default`, {
       listId: this.state.listId,
       listItems: items
     });
