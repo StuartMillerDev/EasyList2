@@ -5,12 +5,13 @@ import ViewList from "./pages/ViewList";
 import ViewControl from "./pages/ViewControl";
 import ViewCheckout from "./pages/ViewCheckout";
 import ViewCreateList from "./pages/ViewCreateList";
+import ViewListEdit from "./pages/ViewListEdit";
 import Loading from "./pages/Loading";
 import './App.css';
 
 class App extends React.Component {
   state={
-
+    addItems:[]
   }
 
 
@@ -52,18 +53,17 @@ class App extends React.Component {
           }
       );
   }
-
     // Deletes a list from the database
     handleListDelete(event){
       event.preventDefault();
-      axios.delete(`/api/lists/${this.state.selectedList}`).then(res =>{
+      axios.delete(`/api/lists/${this.state.sel}`).then(res =>{
         this.setState({lists:res.data},()=>{
           console.log("list removed");
         })
       })
     }
    
-
+ 
 
 
   render(){
@@ -83,14 +83,20 @@ class App extends React.Component {
           />
 
           <Route exact path="/Checkout" component={ViewCheckout}/>
+
           <Route exact path="/CreateList" render ={props => <ViewCreateList 
-          searchAllitemNames={this.searchAllitemNames}  
+          searchAllitemNames={this.searchAllitemNames}
+            
           items={this.state.items}/>}
           />
 
           <Route exact path="/lists/:id" render ={props => <ViewList 
           currentList={this.state.selectedList} 
           listName={this.state.listName}/>}
+          />
+
+          <Route exact path="/lists/edit/:id" render ={props => <ViewListEdit 
+          currentList={this.state.selectedList}/>}
           />
 
         </Switch>

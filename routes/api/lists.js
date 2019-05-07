@@ -13,4 +13,7 @@ router.route("/:name")
   .put(listController.update)
   .delete(listController.remove);
 
+// Matches with "/api/lists/edit/:name"
+  router.route("/edit/:name")
+  .put(listController.update);
 module.exports = router;

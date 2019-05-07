@@ -4,15 +4,17 @@ import axios from "axios";
 class ViewCreateList extends Component{
 
     state={
-        listName:""
+        listName:"",
+        
     }
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {value: '', addItems:[]};
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleItemAdd = this.handleItemAdd.bind(this);
       }
 
       style={
@@ -28,16 +30,16 @@ class ViewCreateList extends Component{
 
     // Generates a new list and sends to the database
     createNewList(event){
-        axios.post("/api/lists", {listName:this.state.listName}).then(res =>{
+        axios.post("/api/lists", {listName:this.state.listName,listItems: this.state.addItems}).then(res =>{
           this.setState({lists:res.data},()=>{
-  
+            console.log("RES DATA on submit: ",res.data);
           })
-        })
+        }).catch(err=>console.error(err));
       }
 
     componentDidMount() {
         
-        console.log(this.props)
+        console.log("Props in ViewCreateList: ",this.props)
         
       }
         // Captures the name the user types 
@@ -52,8 +54,19 @@ class ViewCreateList extends Component{
         this.createNewList();
       }
         //   Function to add a new item to the new list
-      handleAddItem(event){
+        handleItemAdd(event){
         event.preventDefault();
+        let selectedItem =event.target.textContent;
+        let objItem=this.handleFindItem(selectedItem);
+        this.state.addItems.push(objItem); 
+        console.log("Items after adding to the array", this.state);
+      }
+
+      handleFindItem(selectedItem){
+          console.log("FIND ITEM: ",selectedItem);
+          axios.get(`/api/items/:${selectedItem}`).then(res=>{
+            console.log( res.data);
+          }).catch(err=>console.error(err));
       }
 
       render(){
@@ -75,7 +88,7 @@ class ViewCreateList extends Component{
                         {
                             this.props.items && 
                             this.props.items.map(item=>{
-                            return <li key={item.name} className="list-group-item btn-sm" onClick={this.handleAddItem}>{item.name}</li>
+                            return <li key={item.name} className="list-group-item btn-sm" onClick={this.handleItemAdd}>{item.name}</li>
                         })
                         }
                         </ul>

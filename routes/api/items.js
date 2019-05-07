@@ -7,7 +7,7 @@ router.route("/")
 .post(listController.ItemCreate);
   // Matched with "/api/items/:itemName"
 router.route("/:itemName")
-.get(listController.ItemfindAll)
+.get(listController.ItemfindByName)
 .put(listController.ItemUpdate)
 .delete(listController.ItemRemove);
 
