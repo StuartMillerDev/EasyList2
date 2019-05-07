@@ -30,7 +30,7 @@ class ViewList extends Component{
              <div>
               <Banner listName="Store List"/>
               <div className="container fluid">
-                <List listName={this.props.listName}/>
+                <List currentList={this.props.currentList}/>
               </div>
               <Link className="btn  btn-block" style={this.style.checkout} to="/Checkout">CHECKOUT</Link>
               

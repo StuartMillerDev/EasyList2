@@ -55,7 +55,7 @@ class ControlList extends React.Component {
                         {
                             this.props.lists && 
                             this.props.lists.map(list=>{
-                            return <li key={list.listName} className="list-group-item btn-lg" onClick={this.handleListSelect}>{list.listName}</li>
+                            return <li key={list.listName} className="list-group-item btn-lg" onClick={this.props.handleListSelect}>{list.listName}</li>
                         })
                         }
                     </ul>

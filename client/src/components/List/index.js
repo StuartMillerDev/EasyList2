@@ -40,10 +40,11 @@ class List extends Component {
   // Collects all the items
   componentDidMount(items) {
     this.getListItems();
+    
   }
   // a default loading 
   getListItems = () => {
-    console.log(this.props);
+    console.log("PROPS IN LIST COMPONENT: ",this.props);
     axios.get(`/api/lists/Default`)
       .then(results => {
         this.setState({
@@ -66,6 +67,7 @@ class List extends Component {
   // A function to invert the isChecked Property on each listItem
   handleItemCheck = event => {
     event.preventDefault();
+    
     let targetItem = event.target.id;
     const updatedItems = [...this.state.items];
     const targetIdx = updatedItems.findIndex(item => item.name === targetItem);
@@ -76,6 +78,8 @@ class List extends Component {
     this.updateList(updatedItems)
       .then(this.getListItems);
   };
+
+  
 
   // Render method
   render() {
