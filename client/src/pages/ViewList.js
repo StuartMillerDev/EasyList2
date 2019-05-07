@@ -28,7 +28,7 @@ class ViewList extends Component{
       render(){
           return(
              <div>
-              <Banner listName="Store List"/>
+              <Banner listName={this.props.currentList}/>
               <div className="container fluid">
                 <List currentList={this.props.currentList}/>
               </div>

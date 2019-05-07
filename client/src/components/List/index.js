@@ -42,23 +42,23 @@ class List extends Component {
     this.getListItems();
     
   }
-  // a default loading 
+  // a function to grab the list name and use it in a dynamic URL  
   getListItems = () => {
-    console.log("PROPS IN LIST COMPONENT: ",this.props);
-    axios.get(`/api/lists/Default`)
+    
+    axios.get(`/api/lists/${this.props.currentList}`)
       .then(results => {
         this.setState({
           items: results.data.listItems,
           listName:results.data.listName,
           listId: results.data._id
         });
-        console.log(this.state);
+        console.log("PROPS IN LIST COMPONENT: ",this.props);
       }
     );
   }
   // updates the database with the current list items 
   updateList = (items) => {
-    return axios.put(`/api/lists/Default`, {
+    return axios.put(`/api/lists/${this.props.currentList}`, {
       listId: this.state.listId,
       listItems: items
     });
