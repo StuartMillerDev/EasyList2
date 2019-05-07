@@ -22,7 +22,7 @@ class ViewList extends Component{
     }
 
     componentDidMount() {
-        console.log("LIST NAME IN VIEWLIST: ",this.props)
+        // console.log("LIST NAME IN VIEWLIST: ",this.props)
       }
 
       render(){

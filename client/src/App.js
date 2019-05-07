@@ -45,7 +45,6 @@ class App extends React.Component {
     handleListSelect=event=>{
       // console.log(this.state);
       let listTarget=event.target.textContent;
-      console.log("listTarget: ", listTarget);
       this.setState({selectedList:listTarget}, ()=>{
           document.querySelectorAll('.topBtns').forEach(btn => {
               btn.classList.remove('disabled')
@@ -53,6 +52,17 @@ class App extends React.Component {
           }
       );
   }
+
+    // Deletes a list from the database
+    handleListDelete(event){
+      event.preventDefault();
+      axios.delete(`/api/lists/${this.state.selectedList}`).then(res =>{
+        this.setState({lists:res.data},()=>{
+          console.log("list removed");
+        })
+      })
+    }
+   
 
 
 
@@ -64,10 +74,25 @@ class App extends React.Component {
       
         <Switch>
           <Route exact path="/" component={Loading} />
-          <Route exact path="/Control" render={props => <ViewControl  handleListSelect={this.handleListSelect}  searchAllListNames={this.searchAllListNames} lists={this.state.lists}/>} />
+
+          <Route exact path="/Control" render={props => <ViewControl  
+          handleListSelect={this.handleListSelect}  
+          searchAllListNames={this.searchAllListNames} 
+          lists={this.state.lists}/>} 
+          handleListDelete={this.handleListDelete}
+          />
+
           <Route exact path="/Checkout" component={ViewCheckout}/>
-          <Route exact path="/CreateList" render ={props => <ViewCreateList searchAllitemNames={this.searchAllitemNames}  items={this.state.items}/>}/>
-          <Route exact path="/lists/:id" render ={props => <ViewList currentList={this.state.selectedList} listName={this.state.listName}/>}/>
+          <Route exact path="/CreateList" render ={props => <ViewCreateList 
+          searchAllitemNames={this.searchAllitemNames}  
+          items={this.state.items}/>}
+          />
+
+          <Route exact path="/lists/:id" render ={props => <ViewList 
+          currentList={this.state.selectedList} 
+          listName={this.state.listName}/>}
+          />
+
         </Switch>
       </div>
     </Router>

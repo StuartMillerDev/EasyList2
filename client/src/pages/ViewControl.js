@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import List from "../components/List";
 import Banner from "../components/Banner";
 import Checkout from "../components/Checkout";
@@ -16,7 +17,12 @@ class ViewControl extends Component{
           return(
              <div>
                 {
-                    this.props && <ControlList handleListSelect={this.props.handleListSelect} searchAllListNames={this.props.searchAllListNames} lists={this.props.lists}/>
+                    this.props && <ControlList 
+                    handleListSelect={this.props.handleListSelect} 
+                    searchAllListNames={this.props.searchAllListNames} 
+                    lists={this.props.lists}
+                    handleListDelete={this.props.handleListDelete}
+                    />
                 }
                  
 

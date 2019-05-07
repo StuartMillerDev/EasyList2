@@ -16,21 +16,6 @@ class ControlList extends React.Component {
       
     }
 
-    // // function  thats gets the name of the list the user clicked on and passes it into the state of the app.
-    // // Finds all the buttons that have the class .topBtns and removes the disabled attribute.
-    // handleListSelect=event=>{
-    //     // console.log(this.state);
-    //     let listTarget=event.target.textContent;
-        
-    //     this.setState({selectedList:listTarget}, ()=>{
-    //         document.querySelectorAll('.topBtns').forEach(btn => {
-    //             btn.classList.remove('disabled')
-    //             })
-    //         }
-    //     );
-    // }
-    
-  
     // Function that loads the lists to display on the list selector
     componentDidMount() {
         this.props.searchAllListNames()
@@ -65,7 +50,7 @@ class ControlList extends React.Component {
                     <Link className="btn btn-block btn-lg btn-primary topBtns disabled" to={`/lists/${this.state.selectedList}`}>OPEN</Link>  
                     <RoundButton className="btn btn-block btn-primary btn-lg topBtns disabled" text="EDIT" />
                     <RoundButton className="btn btn-block btn-primary btn-lg topBtns disabled"  text="ADD PEOPLE" />
-                    <RoundButton className="btn btn-block btn-danger btn-lg topBtns disabled"  text="DELETE" />
+                    <RoundButton className="btn btn-block btn-danger btn-lg topBtns disabled"  text="DELETE" onClick={this.props.handleListDelete}/>
                 </div>
             </div>    
             <div className="d-flex justify-content-center">
