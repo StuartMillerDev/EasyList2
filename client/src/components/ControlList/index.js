@@ -16,18 +16,19 @@ class ControlList extends React.Component {
       
     }
 
-    // function  thats gets the name of the list the user clicked on and passes it into the state of the app.
-    // Finds all the buttons that have the class .topBtns and removes the disabled attribute.
-    handleListSelect=event=>{
-        // console.log(this.state);
-        let listTarget=event.target.textContent;
-        this.setState({selectedList:listTarget}, ()=>{
-            document.querySelectorAll('.topBtns').forEach(btn => {
-                btn.classList.remove('disabled')
-                })
-            }
-        );
-    }
+    // // function  thats gets the name of the list the user clicked on and passes it into the state of the app.
+    // // Finds all the buttons that have the class .topBtns and removes the disabled attribute.
+    // handleListSelect=event=>{
+    //     // console.log(this.state);
+    //     let listTarget=event.target.textContent;
+        
+    //     this.setState({selectedList:listTarget}, ()=>{
+    //         document.querySelectorAll('.topBtns').forEach(btn => {
+    //             btn.classList.remove('disabled')
+    //             })
+    //         }
+    //     );
+    // }
     
   
     // Function that loads the lists to display on the list selector

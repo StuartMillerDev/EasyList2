@@ -40,6 +40,19 @@ class App extends React.Component {
     ).catch(err => console.error(err));
 }
 
+   // function  thats gets the name of the list the user clicked on and passes it into the state of the app.
+    // Finds all the buttons that have the class .topBtns and removes the disabled attribute.
+    handleListSelect=event=>{
+      // console.log(this.state);
+      let listTarget=event.target.textContent;
+      
+      this.setState({selectedList:listTarget}, ()=>{
+          document.querySelectorAll('.topBtns').forEach(btn => {
+              btn.classList.remove('disabled')
+              })
+          }
+      );
+  }
 
 
 
@@ -51,10 +64,10 @@ class App extends React.Component {
       
         <Switch>
           <Route exact path="/" component={Loading} />
-          <Route exact path="/Control" render={props => <ViewControl  searchAllListNames={this.searchAllListNames} lists={this.state.lists}/>} />
+          <Route exact path="/Control" render={props => <ViewControl  handleListSelect={this.handleListSelect}  searchAllListNames={this.searchAllListNames} lists={this.state.lists}/>} />
           <Route exact path="/Checkout" component={ViewCheckout}/>
           <Route exact path="/CreateList" render ={props => <ViewCreateList searchAllitemNames={this.searchAllitemNames}  items={this.state.items}/>}/>
-          <Route exact path="/lists/:id" render ={props => <ViewList listName={this.state.listName}/>}/>
+          <Route exact path="/lists/:id" render ={props => <ViewList currentlList={this.state.currentlList} listName={this.state.listName}/>}/>
         </Switch>
       </div>
     </Router>

@@ -16,7 +16,7 @@ class ViewControl extends Component{
           return(
              <div>
                 {
-                    this.props && <ControlList searchAllListNames={this.props.searchAllListNames} lists={this.props.lists}/>
+                    this.props && <ControlList handleListSelect={this.props.handleListSelect} searchAllListNames={this.props.searchAllListNames} lists={this.props.lists}/>
                 }
                  
 
