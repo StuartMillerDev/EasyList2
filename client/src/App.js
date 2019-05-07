@@ -56,7 +56,7 @@ class App extends React.Component {
     // Deletes a list from the database
     handleListDelete(event){
       event.preventDefault();
-      axios.delete(`/api/lists/${this.state.sel}`).then(res =>{
+      axios.delete(`/api/lists/${this.state.selectedList}`).then(res =>{
         this.setState({lists:res.data},()=>{
           console.log("list removed");
         })
